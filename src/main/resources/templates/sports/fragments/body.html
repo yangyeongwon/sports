@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	<body th:fragment="main-body">
+		<div class="fixed-navbar" style="height:200px; background:#0B509E;-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none">
+			<div style="padding: 0px 298px 0px 383px; height: 200px; display: inline-block;">
+				<div class="pull-left" style="width:20%; position:fixed; display: inline-block;" >
+					<img th:src="@{/imgs/Incheon_logo.png} "/>
+				</div>
+				<div style="float:left; display: inline-block; padding-top:0px;  padding-left:175px; position:fixed;">
+					<img th:src="@{/imgs/Incheon_bingo.jpg} "/>
+				</div>
+				<div style="position:absolute; bottom:15px; display:inline-block; padding-left: 968px; width: 100%; height: 28px;">
+					<img th:src="@{/imgs/login_icon.png}" style="max-height: 100%; cursor:pointer;"/>
+					<span style="display: inline-block; font-size:18px; vertical-align:bottom; cursor:pointer;">로그인</span>
+				</div>
+			</div>
+		</div>
+		<!-- /.fixed-navbar -->
+		<div id="wrapper" class="section1" style="display:block;">
+			<div class="main-content" style="padding-top:215px;">
+				<div class="row row-inline-block small-spacing">
+					<div class="col-xs-12">
+						<div class="box-content">
+							<div class="clearfix" style="width:1430px; margin:0 auto;">
+								<!-- 1 -->
+								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: #777799;">
+								
+								</div>
+								
+								<!-- 2 -->
+								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								
+								</div>
+								
+								<!-- 3 -->
+								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
+								
+								</div>
+								<div style="float: left; width: 20%; height: 200px; background-color: #777799;">
+								
+								</div>
+							</div>
+							<!-- //.clearfix -->
+	
+							<th:block layout:fragment="content"></th:block>
+	
+							<th:block layout:fragment="paging"></th:block>
+						</div>
+						<!-- /.box-content -->
+						
+						<th:block layout:fragment="add-content"></th:block>
+
+					</div>
+					<!-- /.col-xs-12 -->
+				</div>
+				<!-- /.row row-inline-block small-spacing -->
+				<footer class="footer">
+					<ul class="list-inline">
+						<li>INCHEON UNITED SOCIAL MEDIA.</li>
+					</ul>
+				</footer>
+			</div>
+			<!-- /.main-content -->
+		</div>
+		
+		<div id="wrapper" class="section2" style="display:none;">
+			<div class="main-content" style="padding-top:215px;">
+				<div class="row row-inline-block small-spacing">
+					<div class="col-xs-12">
+						<div class="box-content">
+							<div class="clearfix">
+								<h4 class="box-title pull-left"></h4>
+								<!-- /.box-title -->
+	
+								<th:block layout:fragment="search"></th:block>
+	
+							</div>
+							<!-- //.clearfix -->
+	
+							<th:block layout:fragment="content"></th:block>
+	
+							<th:block layout:fragment="paging"></th:block>
+						</div>
+						<!-- /.box-content -->
+						
+						<th:block layout:fragment="add-content"></th:block>
+
+					</div>
+					<!-- /.col-xs-12 -->
+				</div>
+				<!-- /.row row-inline-block small-spacing -->
+				<footer class="footer">
+					<ul class="list-inline">
+						<li>INCHEON UNITED SOCIAL MEDIA.</li>
+					</ul>
+				</footer>
+			</div>
+			<!-- /.main-content -->
+		</div>
+		<!-- /#wrapper -->
+
+		<script th:src="@{/scripts/jquery.min.js}"></script>
+		<script th:src="@{/plugin/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+
+		<script th:src="@{/scripts/main.js}"></script>
+		<script th:src="@{/scripts/common.js}"></script>
+
+		<th:block layout:fragment="script"></th:block>
+	</body>
+</html>
