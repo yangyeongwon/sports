@@ -23,6 +23,15 @@ body {
   background: #f5f7fa;
   color: #505458;
 }
+
+.ui-widget-overlay {
+	opacity: 0.50 !important;
+    background-color: #000000 !important;
+}
+.ui-widget-content {
+	border: none !important;
+	background: none;
+}
 #wrapper {
   position: relative;
   top: 0px;

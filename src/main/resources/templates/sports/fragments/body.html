@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	
 	<body th:fragment="main-body">
@@ -11,8 +14,8 @@
 					<img th:src="@{/imgs/Incheon_bingo.jpg} "/>
 				</div>
 				<div style="position:absolute; bottom:15px; display:inline-block; padding-left: 968px; width: 100%; height: 28px;">
-					<img th:src="@{/imgs/login_icon.png}" style="max-height: 100%; cursor:pointer;"/>
-					<span style="display: inline-block; font-size:18px; vertical-align:bottom; cursor:pointer;">로그인</span>
+					<img data-btn="login" th:src="@{/imgs/login_icon.png}" style="max-height: 100%; cursor:pointer;"/>
+					<span data-btn="login" style="display: inline-block; font-size:18px; vertical-align:bottom; cursor:pointer;">로그인</span>
 				</div>
 			</div>
 		</div>
@@ -22,55 +25,60 @@
 				<div class="row row-inline-block small-spacing">
 					<div class="col-xs-12">
 						<div class="box-content">
-							<div class="clearfix" style="width:1430px; margin:0 auto;">
+							<div class="clearfix" style="width:1000px; margin:0 auto;">
 								<!-- 1 -->
-								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								<div style="float: left; width: 25%; height: 150px; background-color: brown;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								<div style="float: left; width: 25%; height: 150px; background-color: #74992e;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
+								<div style="float: left; width: 25%; height: 150px; background-color: rgb(255, 255, 128);">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
-								
-								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: #777799;">
+								<div style="float: left; width: 25%; height: 150px; background-color: hsl(50, 33%, 25%);">
 								
 								</div>
 								
 								<!-- 2 -->
-								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								<div style="float: left; width: 25%; height: 150px; background-color: #74992e;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								<div style="float: left; width: 25%; height: 150px; background-color: brown;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
+								<div style="float: left; width: 25%; height: 150px; background-color: hsl(50, 33%, 25%);">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
-								
-								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								<div style="float: left; width: 25%; height: 150px; background-color: rgb(255, 255, 128);">
 								
 								</div>
 								
 								<!-- 3 -->
-								<div style="float: left; width: 20%; height: 200px; background-color: brown;">
+								<div style="float: left; width: 25%; height: 150px; background-color: brown;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: #74992e;">
+								<div style="float: left; width: 25%; height: 150px; background-color: #74992e;">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: rgb(255, 255, 128);">
+								<div style="float: left; width: 25%; height: 150px; background-color: rgb(255, 255, 128);">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: hsl(50, 33%, 25%);">
+								<div style="float: left; width: 25%; height: 150px; background-color: hsl(50, 33%, 25%);">
 								
 								</div>
-								<div style="float: left; width: 20%; height: 200px; background-color: #777799;">
+								
+								<!-- 3 -->
+								<div style="float: left; width: 25%; height: 150px; background-color: rgb(255, 255, 128);">
+								
+								</div>
+								<div style="float: left; width: 25%; height: 150px; background-color: hsl(50, 33%, 25%);">
+								
+								</div>
+								<div style="float: left; width: 25%; height: 150px; background-color: brown;">
+								
+								</div>
+								<div style="float: left; width: 25%; height: 150px; background-color: #74992e;">
 								
 								</div>
 							</div>
@@ -132,14 +140,76 @@
 			<!-- /.main-content -->
 		</div>
 		<!-- /#wrapper -->
-
-		<script th:src="@{/scripts/jquery.min.js}"></script>
-		<script th:src="@{/plugin/bootstrap/js/bootstrap.min.js}"></script>
-		<script th:src="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
-
-		<script th:src="@{/scripts/main.js}"></script>
-		<script th:src="@{/scripts/common.js}"></script>
-
+		<script th:inline="javascript">
+			
+			$("img[data-btn='login'], span[data-btn='login']").on({
+				click : function(e){
+					$("body").append("<div id='dialog_login'></div>");
+					_sendGetRequest($("#dialog_login"), "/sports/main/dialog");
+				}
+			});
+			
+			
+			
+			function _sendGetRequest(target, url){
+				$.ajax({
+					url: url,
+					type: "get",
+				}).done(function(data){
+					$("#dialog_login").html(data);
+					
+					let digWeight = $(window).width();
+					$("#dialog_login").css({
+		                'width' : digWeight * 0.8 ,
+		            	'position': 'fixed',
+		                'left': digWeight / 2.7,
+		                'top': '25%',
+		                'margin-left': -$("#custstatus_dlgViewDetail").outerWidth() / 2 + 'px',
+		                'margin-top': -$("#custstatus_dlgViewDetail").outerHeight() / 4 + 'px'
+		            });
+					
+					$("#dialog_login").dialog({
+						width: "auto",
+						height: "auto",
+						modal: true,
+						resizable: false,
+						open: function(e, ui){
+							console.log("dialog open")
+						}
+					});
+					
+					$(".ui-dialog-titlebar").css("display", "none");
+					
+					$("input[data-input='id'], input[data-input='pw']").on({
+						keydown: function(e){
+							let key = e.keyCode;
+							if(key === 13) {
+								let ele = $(this).data("input");
+								switch(ele){
+									case "id": $("input[data-input='pw']").focus(); break;
+									case "pw": $("div[data-div='loginBtn']").focus(); break;
+								}
+							}
+						}
+					});
+					
+					$("div[data-div='loginBtn']").on({
+						click: function(e){
+							
+						},
+						keydown: function(e){
+							let key = e.keyCode;
+							
+						}
+					});
+				});
+			}
+			
+			
+			
+		</script>	
+		
+		
 		<th:block layout:fragment="script"></th:block>
 	</body>
 </html>
